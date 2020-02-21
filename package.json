@@ -1,0 +1,54 @@
+{
+  "name": "@dxos/crypto",
+  "version": "0.0.1",
+  "description": "Basic crypto key utils",
+  "main": "dist/es/index.js",
+  "scripts": {
+    "build": "babel ./src --out-dir ./dist/es --ignore \"**/*.test.js\" --source-maps inline",
+    "build:watch": "yarn run build --watch",
+    "clean": "rm -rf dist",
+    "coverage": "npm test -- --coverage",
+    "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls",
+    "lint": "semistandard 'src/**/*.js'",
+    "prepublishOnly": "npm run test && npm run build",
+    "test": "jest --verbose --passWithNoTests",
+    "posttest": "npm run lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "GPL-3.0",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "dependencies": {
+    "crypto-js": "^3.1.9-1",
+    "humanhash": "^1.0.4",
+    "hypercore-crypto": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-eslint": "^10.0.2",
+    "babel-jest": "^24.8.0",
+    "babel-loader": "^8.0.0",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "coveralls": "^3.0.7",
+    "jest": "^24.5.0",
+    "semistandard": "14.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "semistandard": {
+    "parser": "babel-eslint",
+    "env": [
+      "jest",
+      "node",
+      "browser"
+    ]
+  }
+}
