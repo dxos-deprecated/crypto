@@ -2,6 +2,9 @@
   "name": "@dxos/crypto",
   "version": "1.0.0-beta.0",
   "description": "Basic crypto key utils",
+  "files": [
+    "dist"
+  ],
   "main": "dist/es/index.js",
   "scripts": {
     "build": "babel ./src --out-dir ./dist/es --ignore \"**/*.test.js\" --source-maps inline",
