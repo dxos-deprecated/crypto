@@ -33,10 +33,13 @@ export function keyToBuffer (str) {
 }
 
 /**
- * @param {Buffer} buffer - Key buffer.
+ * @param {Buffer | Uint8Array} buffer - Key buffer.
  * @return {string} Hex string representation of key.
  */
 export function keyToString (buffer) {
+  if (buffer instanceof Uint8Array) {
+    buffer = buffer.from(Uint8Array);
+  }
   assert(buffer instanceof Buffer, 'Invalid type');
   return buffer.toString('hex');
 }
