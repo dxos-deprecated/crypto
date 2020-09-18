@@ -1,9 +1,10 @@
 //
-// Copyright 2020 DxOS.
+// Copyright 2020 DXOS.org
 //
 
 import assert from 'assert';
 import crypto from 'hypercore-crypto';
+import SHA256 from 'crypto-js/sha256';
 import HumanHasher from 'humanhash';
 
 export const hasher = new HumanHasher();
@@ -18,7 +19,7 @@ export const SIGNATURE_LENGTH = 64;
 // strings as late as possible (e.g., to log/display).
 //
 
-export const { discoveryKey, keyPair: createKeyPair } = crypto;
+export const { keyPair: createKeyPair } = crypto;
 
 /**
  * @param {string} str - Hex string representation of key.
@@ -67,6 +68,14 @@ export function randomBytes (length = 32) {
  */
 export function createId () {
   return keyToString(randomBytes(32));
+}
+
+/**
+ * @param {String} str
+ * @return {Number}
+ */
+export function hash (str) {
+  return SHA256(str).toString();
 }
 
 /**

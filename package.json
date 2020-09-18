@@ -14,7 +14,7 @@
     "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls",
     "lint": "semistandard 'src/**/*.js'",
     "prepublishOnly": "npm run test && npm run build",
-    "test": "jest --verbose --passWithNoTests",
+    "test": "jest --rootDir=src --verbose --passWithNoTests",
     "posttest": "npm run lint"
   },
   "keywords": [],
