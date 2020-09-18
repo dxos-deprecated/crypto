@@ -38,7 +38,7 @@ export function keyToBuffer (str) {
  */
 export function keyToString (buffer) {
   if (buffer instanceof Uint8Array) {
-    buffer = buffer.from(Uint8Array);
+    buffer = Buffer.from(buffer);
   }
   assert(buffer instanceof Buffer, 'Invalid type');
   return buffer.toString('hex');
