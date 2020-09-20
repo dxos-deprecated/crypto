@@ -4,7 +4,6 @@
 
 import assert from 'assert';
 import crypto from 'hypercore-crypto';
-import SHA256 from 'crypto-js/sha256';
 import HumanHasher from 'humanhash';
 
 export const hasher = new HumanHasher();
@@ -34,10 +33,14 @@ export function keyToBuffer (str) {
 }
 
 /**
- * @param {Buffer} buffer - Key buffer.
+ * @param {Buffer | Uint8Array} buffer - Key buffer.
  * @return {string} Hex string representation of key.
  */
 export function keyToString (buffer) {
+  if (buffer instanceof Uint8Array) {
+    buffer = buffer.from(Uint8Array);
+  }
+
   assert(buffer instanceof Buffer, 'Invalid type');
   return buffer.toString('hex');
 }
@@ -68,14 +71,6 @@ export function randomBytes (length = 32) {
  */
 export function createId () {
   return keyToString(randomBytes(32));
-}
-
-/**
- * @param {String} str
- * @return {Number}
- */
-export function hash (str) {
-  return SHA256(str).toString();
 }
 
 /**

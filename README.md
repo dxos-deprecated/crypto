@@ -14,7 +14,11 @@ $ npm install @dxos/crypto
 
 ## Usage
 
-// TBD
+```
+import { createKeyPair } from '@dxos/crypto';
+
+const { publicKey, secretKey } = createKeyPair();
+```
 
 ## Contributing
 
