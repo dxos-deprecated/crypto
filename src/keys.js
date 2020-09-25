@@ -46,7 +46,7 @@ export function keyToString (buffer) {
 
 /**
  * @param {Buffer} value
- * @return {string|Buffer}
+ * @return {string}
  */
 export function humanize (value) {
   if (value instanceof Buffer) {
