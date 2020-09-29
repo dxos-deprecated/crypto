@@ -1,6 +1,6 @@
 {
   "name": "@dxos/crypto",
-  "version": "1.0.0-beta.7",
+  "version": "1.0.0-beta.8",
   "description": "Basic crypto key utils",
   "files": [
     "dist",
