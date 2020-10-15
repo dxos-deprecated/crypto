@@ -49,7 +49,7 @@ export function keyToString (buffer) {
  * @return {string}
  */
 export function humanize (value) {
-  if (value instanceof Uint8Array) {
+  if (value instanceof Uint8Array || value instanceof Buffer) {
     value = keyToString(value);
   }
 
