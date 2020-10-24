@@ -46,11 +46,11 @@ export function keyToString (buffer) {
 }
 
 /**
- * @param {Buffer} value
- * @return {string|Buffer}
+ * @param {Buffer | Uint8Array} value
+ * @return {string}
  */
 export function humanize (value) {
-  if (value instanceof Buffer) {
+  if (value instanceof Uint8Array || value instanceof Buffer) {
     value = keyToString(value);
   }
 
