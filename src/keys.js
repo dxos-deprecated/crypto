@@ -82,7 +82,15 @@ export function sign (message, secretKey) {
   assert(Buffer.isBuffer(message));
   assert(Buffer.isBuffer(secretKey) && secretKey.length === SECRET_KEY_LENGTH);
 
-  return crypto.sign(message, secretKey);
+  if(typeof window !== 'undefined' && window?.crypto?.subtle) {
+    return window.crypto.subtle.sign(
+      { name: 'ECDSA', hash: 'SHA-512' },
+      window.crypto.subtle.importKey('raw', secretKey, { name: 'ECDSA', namedCurve: 'P-512' }),
+      message,
+    )
+  } else {
+    return crypto.sign(message, secretKey);
+  }
 }
 
 /**
@@ -97,5 +105,14 @@ export function verify (message, signature, publicKey) {
   assert(Buffer.isBuffer(signature) && signature.length === SIGNATURE_LENGTH);
   assert(Buffer.isBuffer(publicKey) && publicKey.length === PUBLIC_KEY_LENGTH);
 
-  return crypto.verify(message, signature, publicKey);
+  if(typeof window !== 'undefined' && window?.crypto?.subtle) {
+    return window.crypto.subtle.verify(
+      { name: 'ECDSA', hash: 'SHA-512' },
+      window.crypto.subtle.importKey('raw', secretKey, { name: 'ECDSA', namedCurve: 'P-512' }),
+      signature,
+      message,
+    )
+  } else {
+    return crypto.verify(message, signature, publicKey);
+  }
 }
