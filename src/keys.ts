@@ -3,8 +3,8 @@
 //
 
 import assert from 'assert';
-import crypto from 'hypercore-crypto';
 import HumanHasher from 'humanhash';
+import crypto from 'hypercore-crypto';
 
 export const hasher = new HumanHasher();
 
@@ -18,13 +18,18 @@ export const SIGNATURE_LENGTH = 64;
 // strings as late as possible (e.g., to log/display).
 //
 
-export const { keyPair: createKeyPair } = crypto;
+export interface KeyPair {
+  publicKey: Buffer
+  secretKey: Buffer
+}
+
+export const createKeyPair: () => KeyPair = crypto.keyPair;
 
 /**
  * @param {string} str - Hex string representation of key.
  * @return {Buffer} Key buffer.
  */
-export function keyToBuffer (str) {
+export function keyToBuffer (str: string): Buffer {
   assert(typeof str === 'string', 'Invalid type');
   const buffer = Buffer.from(str, 'hex');
   assert(buffer.length === PUBLIC_KEY_LENGTH || buffer.length === SECRET_KEY_LENGTH,
@@ -36,7 +41,7 @@ export function keyToBuffer (str) {
  * @param {Buffer | Uint8Array} buffer - Key buffer.
  * @return {string} Hex string representation of key.
  */
-export function keyToString (buffer) {
+export function keyToString (buffer: Buffer | Uint8Array): string {
   if (buffer instanceof Uint8Array) {
     buffer = Buffer.from(buffer);
   }
@@ -45,12 +50,8 @@ export function keyToString (buffer) {
   return buffer.toString('hex');
 }
 
-/**
- * @param {Buffer | Uint8Array} value
- * @return {string}
- */
-export function humanize (value) {
-  if (value instanceof Uint8Array || value instanceof Buffer) {
+export function humanize (value: Buffer | Uint8Array | string): string {
+  if (value instanceof Buffer || value instanceof Uint8Array) {
     value = keyToString(value);
   }
 
@@ -62,14 +63,14 @@ export function humanize (value) {
  * @param [length=32]
  * @return {Buffer}
  */
-export function randomBytes (length = 32) {
+export function randomBytes (length = 32): Buffer {
   return crypto.randomBytes(length);
 }
 
 /**
  * @return {string}
  */
-export function createId () {
+export function createId (): string {
   return keyToString(randomBytes(32));
 }
 
@@ -79,7 +80,7 @@ export function createId () {
  * @param {Buffer} secretKey
  * @returns {Buffer} signature
  */
-export function sign (message, secretKey) {
+export function sign (message: Buffer, secretKey: Buffer): Buffer {
   assert(Buffer.isBuffer(message));
   assert(Buffer.isBuffer(secretKey) && secretKey.length === SECRET_KEY_LENGTH);
 
@@ -93,7 +94,7 @@ export function sign (message, secretKey) {
  * @param {Buffer} signature
  * @return {boolean}
  */
-export function verify (message, signature, publicKey) {
+export function verify (message: Buffer, signature: Buffer, publicKey: Buffer): boolean {
   assert(Buffer.isBuffer(message));
   assert(Buffer.isBuffer(signature) && signature.length === SIGNATURE_LENGTH);
   assert(Buffer.isBuffer(publicKey) && publicKey.length === PUBLIC_KEY_LENGTH);

@@ -1,6 +1,10 @@
-import { PublicKey } from "./public-key"
+//
+// Copyright 2020 DXOS.org
+//
 
-const KEY_HEX = '2c28f0d08ccc5340aee02655675be5796227a28d27b9704df34b7d8b2d9fddc7'
+import { PublicKey } from './public-key';
+
+const KEY_HEX = '2c28f0d08ccc5340aee02655675be5796227a28d27b9704df34b7d8b2d9fddc7';
 
 it('formatting', () => {
   const key = PublicKey.fromHex(KEY_HEX);
@@ -10,7 +14,7 @@ it('formatting', () => {
 
   expect(key.humanize()).toEqual('lemon-nitrogen-sixteen-undress');
   expect(key.toHex()).toEqual(KEY_HEX);
-})
+});
 
 it('asBuffer', () => {
   const key = PublicKey.fromHex(KEY_HEX);
@@ -19,7 +23,7 @@ it('asBuffer', () => {
   expect(buffer).toBeInstanceOf(Buffer);
 
   expect(Buffer.from(KEY_HEX, 'hex').equals(buffer)).toEqual(true);
-})
+});
 
 it('asUint8Array', () => {
   const key = PublicKey.fromHex(KEY_HEX);
@@ -29,13 +33,13 @@ it('asUint8Array', () => {
   expect(Buffer.from(KEY_HEX, 'hex').equals(Buffer.from(array))).toEqual(true);
 
   expect(PublicKey.from(Buffer.from(KEY_HEX, 'hex')).asUint8Array()).toBeInstanceOf(Uint8Array);
-})
+});
 
 it('random', () => {
   const key = PublicKey.random();
 
   PublicKey.assertValidPublicKey(key);
-})
+});
 
 it('from', () => {
   expect(PublicKey.from(KEY_HEX).toHex())
@@ -50,16 +54,16 @@ it('from', () => {
   expect(() => PublicKey.from(new Uint8Array(25))).toThrow();
 
   expect(() => PublicKey.from('foo')).toThrow();
-})
+});
 
 it('equals', () => {
   expect(PublicKey.equals(
     PublicKey.from(KEY_HEX),
-    PublicKey.from(KEY_HEX),
-  )).toEqual(true)
+    PublicKey.from(KEY_HEX)
+  )).toEqual(true);
 
   expect(PublicKey.equals(
     PublicKey.random(),
     PublicKey.random()
-  )).toEqual(false)
-})
+  )).toEqual(false);
+});

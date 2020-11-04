@@ -4,6 +4,10 @@
 
 // dxos-testing-browser
 
+//
+// Copyright 2020 DXOS.org
+//
+
 import { ripemd160, sha1, sha256, sha512 } from './hash';
 
 test('SHA1', () => {

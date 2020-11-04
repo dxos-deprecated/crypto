@@ -11,4 +11,4 @@ import { keyToBuffer } from './keys';
  * @param {String} publicKey
  */
 export const getSignatureValidator =
-  (publicKey) => (message, signature) => verify(message, signature, keyToBuffer(publicKey));
+  (publicKey: string) => (message: Buffer, signature: Buffer) => verify(message, signature, keyToBuffer(publicKey));

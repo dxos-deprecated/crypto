@@ -2,6 +2,10 @@
 // Copyright 2020 DxOS.
 //
 
+//
+// Copyright 2020 DXOS.org
+//
+
 import assert from 'assert';
 import CryptoJS from 'crypto-js';
 
@@ -12,7 +16,7 @@ import CryptoJS from 'crypto-js';
  * @returns {string}
  * @private
  */
-const _hash = (algorithm, plaintext) => {
+const _hash = (algorithm: string, plaintext: string) => {
   assert(typeof algorithm === 'string');
   assert(typeof plaintext === 'string');
 
@@ -24,25 +28,25 @@ const _hash = (algorithm, plaintext) => {
  * @param {string} text
  * @returns {string}
  */
-export const sha1 = (text) => _hash('SHA1', text);
+export const sha1 = (text: string) => _hash('SHA1', text);
 
 /**
  * Creates a SHA-256 hash of the supplied string, returned as a hexadecimal string.
  * @param {string} text
  * @returns {string}
  */
-export const sha256 = (text) => _hash('SHA256', text);
+export const sha256 = (text: string) => _hash('SHA256', text);
 
 /**
  * Creates a SHA-512 hash of the supplied string, returned as a hexadecimal string.
  * @param {string} text
  * @returns {string}
  */
-export const sha512 = (text) => _hash('SHA512', text);
+export const sha512 = (text: string) => _hash('SHA512', text);
 
 /**
  * Creates a SHA-512 hash of the supplied string, returned as a hexadecimal string.
  * @param {string} text
  * @returns {string}
  */
-export const ripemd160 = (text) => _hash('RIPEMD160', text);
+export const ripemd160 = (text: string) => _hash('RIPEMD160', text);

@@ -1,6 +1,10 @@
+//
+// Copyright 2020 DXOS.org
+//
+
 import HumanHasher from 'humanhash';
 import crypto from 'hypercore-crypto';
-import { inspect } from 'util'
+import { inspect } from 'util';
 
 export class PublicKey {
   /**
@@ -11,14 +15,14 @@ export class PublicKey {
   /**
    * Creates new instance of PublicKey automatically determening the input format.
    */
-  static from(source: PublicKeyLike): PublicKey {
-    if(source instanceof PublicKey) {
+  static from (source: PublicKeyLike): PublicKey {
+    if (source instanceof PublicKey) {
       return source;
-    } else if(source instanceof Buffer) {
+    } else if (source instanceof Buffer) {
       return new PublicKey(new Uint8Array(source));
-    } else if(source instanceof Uint8Array) {
+    } else if (source instanceof Uint8Array) {
       return new PublicKey(source);
-    } else if(typeof source === 'string') {
+    } else if (typeof source === 'string') {
       return PublicKey.fromHex(source);
     } else {
       throw new TypeError(`Unable to create PublicKey from ${source}`);
@@ -28,36 +32,36 @@ export class PublicKey {
   /**
    * Creates new instance of PublicKey from hex string.
    */
-  static fromHex(hex: string) {
+  static fromHex (hex: string) {
     return new PublicKey(new Uint8Array(Buffer.from(hex, 'hex')));
   }
 
   /**
    * Create new randomly generated PublicKey.
    */
-  static random(): PublicKey {
+  static random (): PublicKey {
     return new PublicKey(new Uint8Array(crypto.randomBytes(PublicKey.LENGTH)));
   }
 
   /**
    * Creates new PublicKey with all bytes set to zero.
    */
-  static zero(): PublicKey {
+  static zero (): PublicKey {
     return new PublicKey(new Uint8Array(PublicKey.LENGTH));
   }
 
   /**
    * Tests if provided values is an instance of PublicKey.
    */
-  static isPublicKey(value: any): value is PublicKey {
+  static isPublicKey (value: any): value is PublicKey {
     return value instanceof PublicKey;
   }
 
   /**
    * Asserts that provided values is an instance of PublicKey.
    */
-  static assertValidPublicKey(value: any): asserts value is PublicKey {
-    if(!this.isPublicKey(value)) {
+  static assertValidPublicKey (value: any): asserts value is PublicKey {
+    if (!this.isPublicKey(value)) {
       throw new TypeError('Invalid PublicKey');
     }
   }
@@ -65,17 +69,17 @@ export class PublicKey {
   /**
    * Tests two keys for equality.
    */
-  static equals(left: PublicKeyLike, right: PublicKeyLike) {
+  static equals (left: PublicKeyLike, right: PublicKeyLike) {
     return PublicKey.from(left).equals(right);
   }
-  
-  constructor(
-    private readonly _value: Uint8Array,
+
+  constructor (
+    private readonly _value: Uint8Array
   ) {
-    if(!(_value instanceof Uint8Array)) {
+    if (!(_value instanceof Uint8Array)) {
       throw new TypeError(`Expected Uint8Array, got: ${_value}`);
     }
-    if(_value.length !== PublicKey.LENGTH) {
+    if (_value.length !== PublicKey.LENGTH) {
       throw new TypeError(`Public key has invalid length. Expected: ${PublicKey.length}, got: ${_value.length}`);
     }
   }
@@ -83,61 +87,60 @@ export class PublicKey {
   /**
    * Return underlying Uint8Array representation.
    */
-  asUint8Array(): Uint8Array {
+  asUint8Array (): Uint8Array {
     return this._value;
   }
 
   /**
    * Covert this key to buffer.
    */
-  asBuffer(): Buffer {
+  asBuffer (): Buffer {
     return Buffer.from(this._value);
   }
 
   /**
    * Convert this key to hex-encoded string.
    */
-  toHex(): string {
+  toHex (): string {
     return this.asBuffer().toString('hex');
   }
 
   /**
    * Convert this key to human-readable representation.
    */
-  humanize(): string {
+  humanize (): string {
     return hasher.humanize(this.toHex());
   }
 
   /**
    * Same as `PublicKey.humanize()`.
    */
-  toString(): string {
+  toString (): string {
     return this.humanize();
   }
 
   /**
    * Same as `PublicKey.humanize()`.
    */
-  toJson() {
+  toJson () {
     return this.humanize();
   }
 
   /**
    * Used by NodeJS to get textual representation of this object when it's printed with a `console.log` statement.
    */
-  [inspect.custom]() {
+  [inspect.custom] () {
     return `<PublicKey ${this.humanize()}>`;
   }
 
   /**
    * Test this key for equality with some other key.
    */
-  equals(other: PublicKeyLike) {
+  equals (other: PublicKeyLike) {
     const otherConverted = PublicKey.from(other);
     let equal = true;
-    for(let i = 0; i < PublicKey.LENGTH; i++) {
-      equal &&= this._value[i] === otherConverted._value[i]
-      
+    for (let i = 0; i < PublicKey.LENGTH; i++) {
+      equal &&= this._value[i] === otherConverted._value[i];
     }
     return equal;
   }

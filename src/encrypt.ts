@@ -12,7 +12,7 @@ import CryptoJS from 'crypto-js';
  * @param {string} cipher see https://cryptojs.gitbook.io/docs/#ciphers
  * @returns {string} ciphertext
  */
-export function encrypt (plaintext, passphrase, cipher = 'AES') {
+export function encrypt (plaintext: string, passphrase: string, cipher = 'AES') {
   assert(typeof passphrase === 'string');
   assert(typeof cipher === 'string');
 
@@ -26,7 +26,7 @@ export function encrypt (plaintext, passphrase, cipher = 'AES') {
  * @param {string} cipher see https://cryptojs.gitbook.io/docs/#ciphers
  * @returns {string} plaintext
  */
-export function decrypt (ciphertext, passphrase, cipher = 'AES') {
+export function decrypt (ciphertext: string, passphrase: string, cipher = 'AES') {
   assert(typeof ciphertext === 'string');
   assert(typeof passphrase === 'string');
   assert(typeof cipher === 'string');

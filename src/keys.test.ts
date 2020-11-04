@@ -11,9 +11,9 @@ test('Basic key operations', () => {
 
   expect(keyToBuffer(keyToString(publicKey))).toEqual(publicKey);
 
-  expect(() => keyToString('not-a-buffer')).toThrowError();
+  expect(() => keyToString('not-a-buffer' as any)).toThrowError();
   expect(() => keyToBuffer('not-a-value-hex-key')).toThrowError();
-  expect(() => keyToBuffer(publicKey)).toThrowError();
+  expect(() => keyToBuffer(publicKey as any)).toThrowError();
 });
 
 test('Hashing', () => {
