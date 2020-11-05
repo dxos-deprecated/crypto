@@ -25,6 +25,8 @@ export interface KeyPair {
 
 export const createKeyPair: () => KeyPair = crypto.keyPair;
 
+export const discoveryKey: (key: Buffer | Uint8Array) => Buffer = crypto.discoveryKey;
+
 /**
  * @param {string} str - Hex string representation of key.
  * @return {Buffer} Key buffer.
