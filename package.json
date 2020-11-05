@@ -1,6 +1,6 @@
 {
   "name": "@dxos/crypto",
-  "version": "1.0.0-beta.10",
+  "version": "1.0.0-beta.11",
   "description": "Basic crypto key utils",
   "files": [
     "dist",
@@ -14,7 +14,7 @@
     "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls",
     "lint": "eslint 'src/**/*.ts'",
     "prepublishOnly": "npm run test && npm run build",
-    "test": "jest --rootDir=./src --verbose --passWithNoTests"
+    "test": "jest --rootDir=./src --verbose --passWithNoTests --forceExit"
   },
   "keywords": [],
   "author": "",
