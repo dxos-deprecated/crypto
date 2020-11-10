@@ -13,6 +13,7 @@
     "coverage": "npm test -- --coverage",
     "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls",
     "lint": "eslint 'src/**/*.ts'",
+    "lint:lockfile": "lockfile-lint --path yarn.lock --allowed-hosts yarn npm codeload.github.com --validate-https",
     "prepublishOnly": "npm run test && npm run build",
     "test": "jest --rootDir=./src --verbose --passWithNoTests --forceExit"
   },
@@ -33,6 +34,7 @@
     "coveralls": "^3.0.7",
     "eslint": "^7.12.1",
     "jest": "^26.4.0",
+    "lockfile-lint": "^4.3.7",
     "ts-jest": "^26.2.0",
     "typescript": "^4.0.0"
   },
