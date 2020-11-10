@@ -23,7 +23,7 @@ export interface KeyPair {
   secretKey: Buffer
 }
 
-export const createKeyPair: () => KeyPair = crypto.keyPair;
+export const createKeyPair = (seed?: Buffer): KeyPair => crypto.keyPair(seed);
 
 export const discoveryKey: (key: Buffer | Uint8Array) => Buffer = crypto.discoveryKey;
 

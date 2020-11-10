@@ -37,20 +37,6 @@ export class PublicKey {
   }
 
   /**
-   * Create new randomly generated PublicKey.
-   */
-  static random (): PublicKey {
-    return new PublicKey(new Uint8Array(crypto.randomBytes(PublicKey.LENGTH)));
-  }
-
-  /**
-   * Creates new PublicKey with all bytes set to zero.
-   */
-  static zero (): PublicKey {
-    return new PublicKey(new Uint8Array(PublicKey.LENGTH));
-  }
-
-  /**
    * Tests if provided values is an instance of PublicKey.
    */
   static isPublicKey (value: any): value is PublicKey {
