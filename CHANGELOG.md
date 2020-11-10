@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.3](https://www.github.com/dxos/crypto/compare/v1.0.2...v1.0.3) (2020-11-10)
+
+
+### Bug Fixes
+
+* NPM tags ([0b494c7](https://www.github.com/dxos/crypto/commit/0b494c7fc641f260f9be83a85ddd1c22ecbaad69))
+
 ### [1.0.2](https://www.github.com/dxos/crypto/compare/v1.0.1...v1.0.2) (2020-11-10)
 
 
