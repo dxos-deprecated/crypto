@@ -24,7 +24,6 @@ jobs:
           git reset --hard
           VERSION=`cat package.json | grep '"version":' | awk '{ print $2 }' | sed 's/[",]//g'` 
           npm version ${VERSION}-beta.0
-          git commit -am "v$VERSION-beta.0"
           git push
           git tag -f "v$VERSION-beta.0"
           git push --tags -f
