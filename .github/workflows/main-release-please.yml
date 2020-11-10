@@ -38,7 +38,7 @@ jobs:
           git tag -f "${{ steps.release.outputs.tag_name }}"-alpha.0
           git push --tags -f
           git push --delete origin "${{ steps.release.outputs.tag_name }}"
-          npm publish
+          npm publish --tag alpha
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         if: ${{ steps.release.outputs.release_created }}

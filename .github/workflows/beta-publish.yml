@@ -27,6 +27,6 @@ jobs:
           git push
           git tag -f "v$VERSION-beta.0"
           git push --tags -f
-          npm publish
+          npm publish --tag beta
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
