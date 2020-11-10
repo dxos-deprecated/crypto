@@ -3,6 +3,7 @@
 //
 
 import { PublicKey } from './public-key';
+import { randomBytes } from './keys';
 
 const KEY_HEX = '2c28f0d08ccc5340aee02655675be5796227a28d27b9704df34b7d8b2d9fddc7';
 
@@ -35,12 +36,6 @@ it('asUint8Array', () => {
   expect(PublicKey.from(Buffer.from(KEY_HEX, 'hex')).asUint8Array()).toBeInstanceOf(Uint8Array);
 });
 
-it('random', () => {
-  const key = PublicKey.random();
-
-  PublicKey.assertValidPublicKey(key);
-});
-
 it('from', () => {
   expect(PublicKey.from(KEY_HEX).toHex())
     .toEqual(KEY_HEX);
@@ -63,7 +58,7 @@ it('equals', () => {
   )).toEqual(true);
 
   expect(PublicKey.equals(
-    PublicKey.random(),
-    PublicKey.random()
+    PublicKey.from(randomBytes()),
+    PublicKey.from(randomBytes())
   )).toEqual(false);
 });
