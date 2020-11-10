@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.2](https://www.github.com/dxos/crypto/compare/v1.0.1...v1.0.2) (2020-11-10)
+
+
+### Bug Fixes
+
+* more CI fixes ([6f7c6a7](https://www.github.com/dxos/crypto/commit/6f7c6a71f257af0ce0f4d0ecc52195751eab5dc7))
+
 ### [1.0.1](https://www.github.com/dxos/crypto/compare/v1.0.0...v1.0.1) (2020-11-10)
 
 
