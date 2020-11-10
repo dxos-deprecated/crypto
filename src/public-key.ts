@@ -3,7 +3,6 @@
 //
 
 import HumanHasher from 'humanhash';
-import crypto from 'hypercore-crypto';
 import { inspect } from 'util';
 
 export class PublicKey {
