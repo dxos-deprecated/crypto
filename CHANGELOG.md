@@ -1,5 +1,19 @@
 # Changelog
 
+### [1.0.5](https://www.github.com/dxos/crypto/compare/v1.0.4...v1.0.5) (2020-11-11)
+
+
+### Bug Fixes
+
+* error where PublicKey is not detected ([cdb394f](https://www.github.com/dxos/crypto/commit/cdb394f7f3d0a6ea53160d9615140bffd45a513b))
+
+### [1.0.4](https://www.github.com/dxos/crypto/compare/v1.0.3...v1.0.4) (2020-11-10)
+
+
+### Bug Fixes
+
+* package version parsing ([719678a](https://www.github.com/dxos/crypto/commit/719678a1574d5884a45dc639d9f2a6e46052130a))
+
 ### [1.0.3](https://www.github.com/dxos/crypto/compare/v1.0.2...v1.0.3) (2020-11-10)
 
 
