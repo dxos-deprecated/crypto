@@ -23,6 +23,8 @@ export class PublicKey {
       return new PublicKey(source);
     } else if (typeof source === 'string') {
       return PublicKey.fromHex(source);
+    } else if ((<any>source).asUint8Array) {
+      return new PublicKey((<any>source).asUint8Array());
     } else {
       throw new TypeError(`Unable to create PublicKey from ${source}`);
     }
