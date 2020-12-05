@@ -5,6 +5,7 @@
 import assert from 'assert';
 import HumanHasher from 'humanhash';
 import crypto from 'hypercore-crypto';
+import { PublicKey, PublicKeyLike } from './public-key';
 
 export const hasher = new HumanHasher();
 
@@ -25,7 +26,7 @@ export interface KeyPair {
 
 export const createKeyPair = (seed?: Buffer): KeyPair => crypto.keyPair(seed);
 
-export const discoveryKey: (key: Buffer | Uint8Array) => Buffer = crypto.discoveryKey;
+export const discoveryKey = (key: PublicKeyLike): Buffer => crypto.discoveryKey(PublicKey.from(key).asBuffer());
 
 /**
  * @param {string} str - Hex string representation of key.
