@@ -1,5 +1,19 @@
 # Changelog
 
+### [1.0.7](https://www.github.com/dxos/crypto/compare/v1.0.6...v1.0.7) (2020-12-08)
+
+
+### Bug Fixes
+
+* Trigger publish ([88471f1](https://www.github.com/dxos/crypto/commit/88471f1965dac5e5dc2b71d3209a03abfd5f294f))
+
+### [1.0.6](https://www.github.com/dxos/crypto/compare/v1.0.5...v1.0.6) (2020-12-07)
+
+
+### Bug Fixes
+
+* Trigger publish ([eaa0183](https://www.github.com/dxos/crypto/commit/eaa018382aa2617607a5381498e3985829b08d6b))
+
 ### [1.0.5](https://www.github.com/dxos/crypto/compare/v1.0.4...v1.0.5) (2020-11-11)
 
 
