@@ -3,6 +3,7 @@
 //
 
 import HumanHasher from 'humanhash';
+import crypto from 'hypercore-crypto';
 import { inspect } from 'util';
 
 export class PublicKey {
@@ -35,6 +36,10 @@ export class PublicKey {
    */
   static fromHex (hex: string) {
     return new PublicKey(new Uint8Array(Buffer.from(hex, 'hex')));
+  }
+
+  static random (): PublicKey {
+    return PublicKey.from(crypto.randomBytes(32));
   }
 
   /**
